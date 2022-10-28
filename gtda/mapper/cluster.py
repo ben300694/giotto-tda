@@ -134,8 +134,10 @@ class ParallelClustering(BaseEstimator):
 
         """
         X_tot, masks = X
-        check_array(X_tot, ensure_2d=True)
-        check_array(masks, ensure_2d=True)
+        # check_array(X_tot, ensure_2d=True) # OLD code
+        check_array(X_tot, ensure_2d=True, dtype=None)
+        # check_array(masks, ensure_2d=True) # OLD code
+        check_array(masks, ensure_2d=True, dtype=None)
         if not np.issubdtype(masks.dtype, bool):
             raise TypeError("`masks` must be a boolean array.")
         if len(X_tot) != len(masks):
@@ -435,7 +437,8 @@ class FirstSimpleGap(ClusterMixin, BaseEstimator, Agglomerative):
         self
 
         """
-        X = check_array(X)
+        # X = check_array(X) # OLD code
+        X = check_array(X, dtype=None)
         validate_params(
             self.get_params(), self._hyperparameters, exclude=['memory'])
 

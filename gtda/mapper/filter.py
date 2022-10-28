@@ -213,7 +213,8 @@ class Projection(BaseEstimator, TransformerMixin):
         self : object
 
         """
-        check_array(X)
+        # check_array(X) # OLD code
+        check_array(X, dtype=None)
 
         self._is_fitted = True
         return self
@@ -237,12 +238,18 @@ class Projection(BaseEstimator, TransformerMixin):
 
         """
         check_is_fitted(self, '_is_fitted')
+        # TODO remove after testing
+        print("TEST TEST TEST transform function reached")
+        
         # Simple duck typing to handle case of pandas dataframe input
         if hasattr(X, 'columns'):
             # NB in this case we do not check the health of other columns
-            Xt = check_array(X[self.columns], ensure_2d=False, copy=True)
+            # Xt = check_array(X[self.columns], ensure_2d=False, copy=True) # OLD code
+            # New code such that column types are not converted to float
+            Xt = check_array(X[self.columns], ensure_2d=False, copy=True, dtype=None)
         else:
-            Xt = check_array(X, copy=True)
+            # Xt = check_array(X, copy=True) # OLD code
+            Xt = check_array(X, copy=True, dtype=None)
             Xt = Xt[:, self.columns]
         Xt = Xt.reshape(len(Xt), -1)
         return Xt

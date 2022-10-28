@@ -136,7 +136,8 @@ class OneDimensionalCover(BaseEstimator, TransformerMixin):
         self : object
 
         """
-        X = check_array(X, ensure_2d=False)
+        # X = check_array(X, ensure_2d=False) # OLD code
+        X = check_array(X, ensure_2d=False, dtype=None)
         validate_params(self.get_params(), self._hyperparameters)
         if self.overlap_frac <= 1e-8:
             warnings.warn("`overlap_frac` is close to zero, "
@@ -177,7 +178,8 @@ class OneDimensionalCover(BaseEstimator, TransformerMixin):
 
         """
         check_is_fitted(self)
-        Xt = check_array(X, ensure_2d=False)
+        # Xt = check_array(X, ensure_2d=False) # OLD code
+        Xt = check_array(X, ensure_2d=False, dtype=None)
 
         if Xt.ndim == 2:
             _check_has_one_column(Xt)
@@ -239,7 +241,8 @@ class OneDimensionalCover(BaseEstimator, TransformerMixin):
             or duplicated cover sets are removed.
 
         """
-        Xt = check_array(X, ensure_2d=False)
+        # Xt = check_array(X, ensure_2d=False) # OLD code
+        Xt = check_array(X, ensure_2d=False, dtype=None)
         validate_params(self.get_params(), self._hyperparameters)
 
         if Xt.ndim == 2:
@@ -436,7 +439,8 @@ class CubicalCover(BaseEstimator, TransformerMixin):
         self : object
 
         """
-        X = check_array(X, ensure_2d=False)
+        # X = check_array(X, ensure_2d=False) # OLD code
+        X = check_array(X, ensure_2d=False, dtype=None)
         validate_params(self.get_params(), self._hyperparameters)
 
         # Reshape filter function values derived from FunctionTransformer
@@ -477,7 +481,8 @@ class CubicalCover(BaseEstimator, TransformerMixin):
 
         """
         check_is_fitted(self, '_coverers')
-        Xt = check_array(X, ensure_2d=False)
+        # Xt = check_array(X, ensure_2d=False) # OLD code
+        Xt = check_array(X, ensure_2d=False, dtype=None)
 
         # Reshape filter function values derived from FunctionTransformer
         if Xt.ndim == 1:
@@ -518,7 +523,8 @@ class CubicalCover(BaseEstimator, TransformerMixin):
             n_features` as empty or duplicated cover sets are removed.
 
         """
-        Xt = check_array(X, ensure_2d=False)
+        # Xt = check_array(X, ensure_2d=False) # OLD code
+        Xt = check_array(X, ensure_2d=False, dtype=None)
         validate_params(self.get_params(), self._hyperparameters)
 
         # Reshape filter function values derived from FunctionTransformer
